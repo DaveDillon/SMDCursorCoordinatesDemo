@@ -19,10 +19,25 @@ u16 ind = TILE_USER_INDEX;
 Map* bgImage;
 
 Sprite* Cursor;
+Sprite* square;
+Sprite* circle;
+Sprite* bsquare;
 
 bool cusorMode = 0; // 0 is Snap and 1 is Free mode.
 int cursor_x = 0; 
 int cursor_y = 0; 
+
+int eSquare_x = 160; 
+int eSquare_y = -64; 
+int eSquareSpeed = 1;
+
+int eCircle_x = 160; 
+int eCircle_y = -64; 
+int eCircleSpeed = 1;
+
+int ebSquare_x = 160; 
+int ebSquare_y = -64; 
+int ebSquareSpeed = 1;
 
 fix32 cursorSpeed = FIX32(1.5); // Cursor movement speed.
 fix32 fixCursor_x = 0; 
@@ -66,6 +81,25 @@ int main()
 	Cursor = SPR_addSprite(&matrix_curser, cursor_x,cursor_y, TILE_ATTR(PAL3,FALSE,FALSE,FALSE));
 	SPR_setAnim(Cursor, 0);
 
+	eSquare_x = ((random() % 30) + 2) * 8;
+	eSquareSpeed = (random() % 4) + 1;
+	PAL_setPalette(PAL2, e_square.palette->data, DMA);
+	square = SPR_addSprite(&e_square, eSquare_x,eSquare_y, TILE_ATTR(PAL2,FALSE,FALSE,FALSE));
+	SPR_setAnim(square, 0);
+
+	eCircle_x = ((random() % 30) + 2) * 8;
+	eCircleSpeed = (random() % 4) + 1;
+	PAL_setPalette(PAL2, e_circle.palette->data, DMA);
+	circle = SPR_addSprite(&e_circle, eCircle_x,eCircle_y, TILE_ATTR(PAL2,FALSE,FALSE,FALSE));
+	SPR_setAnim(circle, 0);
+
+	ebSquare_x = ((random() % 30) + 2) * 8;
+	ebSquareSpeed = (random() % 4) + 1;
+	PAL_setPalette(PAL2, e_blueSquare.palette->data, DMA);
+	bsquare = SPR_addSprite(&e_blueSquare, ebSquare_x,ebSquare_y, TILE_ATTR(PAL2,FALSE,FALSE,FALSE));
+	SPR_setAnim(bsquare, 0);
+
+
 	// Seupt joystick event handler callback.
 	JOY_setEventHandler(joyEvent);
 
@@ -79,6 +113,31 @@ int main()
 
 	while(1)
 	{        
+
+	
+		if (eSquare_y > 232){
+			eSquare_x = ((random() % 30) + 2) * 8; 
+			eSquareSpeed = (random() % 4) + 1;
+			eSquare_y = -64;
+		}
+		eSquare_y += eSquareSpeed;
+		SPR_setPosition(square, eSquare_x, eSquare_y);
+
+		if (eCircle_y > 232){
+			eCircle_x = ((random() % 30) + 2) * 8; 
+			eCircleSpeed = (random() % 4) + 1;
+			eCircle_y = -64;
+		}
+		eCircle_y += eCircleSpeed;
+		SPR_setPosition(circle, eCircle_x, eCircle_y);
+
+		if (ebSquare_y > 232){
+			ebSquare_x = ((random() % 30) + 2) * 8; 
+			ebSquareSpeed = (random() % 4) + 1;
+			ebSquare_y = -64;
+		}
+		ebSquare_y += ebSquareSpeed;
+		SPR_setPosition(bsquare, ebSquare_x, ebSquare_y);
 
 		// Updates screen with what cursor mode I'm current running in.
 		if (cusorMode == 0){
