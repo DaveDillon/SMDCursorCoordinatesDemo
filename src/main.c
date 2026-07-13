@@ -114,7 +114,6 @@ int main()
 	while(1)
 	{        
 
-	
 		if (eSquare_y > 232){
 			eSquare_x = ((random() % 30) + 2) * 8; 
 			eSquareSpeed = (random() % 4) + 1;
@@ -177,7 +176,7 @@ int main()
 		}
 		else if (cusorMode == 1){ // // cusorMode 1 = Free range mode (note to self, need chicken sprite... tasty free range chicken....)
 
-				//  Again with the fancy text mover logic. Note the use of F32_toInt
+			//  Again with the fancy text mover logic. Note the use of F32_toInt
 			if (F32_toInt(fixCursor_y) < 80 && textPosMode == 0){
 				textPosMode = 1;
 				textBlock_y = 17;
