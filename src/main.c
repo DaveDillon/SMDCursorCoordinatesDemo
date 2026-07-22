@@ -4,13 +4,13 @@
 
 // Cursor X/Y Tech Demo.
 // By Mayhem50 (David Dillon)
-// This poject was created to help me better understand sprite movement and screen coordinates and perils of 
+// This project was created to help me better understand sprite movement and screen coordinates and perils of
 // not converting fix32 numbers back to ints when needed.
-// The code here is no way ideal, other than it works and I got the information and learning I needed. 
-// Use at your own risk, risk of being awsome.
+// The code here is no way ideal, other than it works and I got the information and learning I needed.
+// Use at your own risk, risk of being awesome.
 //-----------------------------------------------------------------------------------------------------------------------
 // Using  SGDK version 2.11 / https://github.com/Stephane-D/sgdk
-// Idea from wathcing Pigsy's Retro Game Dev Tutorials / https://www.youtube.com/@PigsysRetroGameDevTutorials
+// Idea from watching Pigsy's Retro Game Dev Tutorials / https://www.youtube.com/@PigsysRetroGameDevTutorials
 
 static void joyEvent(u16 joy, u16 changed, u16 state);
 void CursorFix32Update();
